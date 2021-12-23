@@ -14,7 +14,7 @@ $ docker-compose up -d --build
 
 Once you're done booting everything up, use cURL or postman etc. to try out the api.
 
-After you're done, shut everything done using:
+After you're done, shut everything down using:
 ```
 $ docker-compose down
 ```
@@ -106,8 +106,8 @@ This is the [MongoDB Go Library](https://pkg.go.dev/gopkg.in/mgo.v2?utm_source=g
 ### Logging in to the mongo shell from the running container
 
 ```
-  $ docker container ls
-  ...grab the <mongo container id>
+$ docker container ls
+...grab the <mongo container id>
 $ docker exec -it <mongo container id> /bin/sh
 # mongo
 ```
