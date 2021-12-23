@@ -1,0 +1,30 @@
+version: '3'
+services:
+  nginx:
+    depends_on:
+      - api
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - 3060:80
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+  api:
+    depends_on:
+      - mongo
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    restart: always
+    volumes:
+      - './api:/app'
+    ports:
+      - 2323:1323
+volumes:
+  mongodb:
